@@ -9,4 +9,5 @@ public class ShopperSummaryResponse {
     private String shopperId;
     private int stickerBalance;
     private List<String> transactions;
+    private List<String> redemptions;
 }

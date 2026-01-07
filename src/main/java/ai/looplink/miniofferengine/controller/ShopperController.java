@@ -26,6 +26,7 @@ public class ShopperController {
         response.setShopperId(shopperId);
         response.setStickerBalance(store.getStickerBalance(shopperId));
         response.setTransactions(store.getShopperTransactions(shopperId));
+        response.setRedemptions(store.getRedemptions(shopperId));
 
         return response;
     }

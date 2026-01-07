@@ -2,6 +2,7 @@ package ai.looplink.miniofferengine.store;
 
 
 import ai.looplink.miniofferengine.engine.OfferResult;
+import ai.looplink.miniofferengine.model.RedemptionReward;
 
 import java.util.List;
 import java.util.Map;
@@ -40,5 +41,24 @@ public class InMemoryStore {
 
     public List<String> getShopperTransactions(String shopperId) {
         return shopperTransactions.getOrDefault(shopperId, List.of());
+    }
+
+    private final Map<String, List<String>> redemptions = new ConcurrentHashMap<>();
+
+    public void redeem(String shopperId, RedemptionReward reward) {
+        int balance = getStickerBalance(shopperId);
+        if (balance < reward.getCost()) {
+            throw new IllegalStateException("Not enough stickers");
+        }
+
+        stickerBalances.put(shopperId, balance - reward.getCost());
+
+        redemptions
+                .computeIfAbsent(shopperId, k -> new CopyOnWriteArrayList<>())
+                .add(reward.getDisplayName());
+    }
+
+    public List<String> getRedemptions(String shopperId) {
+        return redemptions.getOrDefault(shopperId, List.of());
     }
 }
