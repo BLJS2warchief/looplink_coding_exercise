@@ -51,14 +51,14 @@ public class ConfigurableOfferEngine implements OfferEngine {
         );
     }
 
-    private BigDecimal calculateOriginalTotal(Transaction tx) {
-        return tx.getItems().stream()
+    private BigDecimal calculateOriginalTotal(Transaction transaction) {
+        return transaction.getItems().stream()
                 .map(i -> i.getUnitPrice().multiply(BigDecimal.valueOf(i.getQuantity())))
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
-    private BigDecimal applyProductDiscount(OfferConfig offer, Transaction tx, List<AppliedOffer> applied) {
-        BigDecimal discount = tx.getItems().stream()
+    private BigDecimal applyProductDiscount(OfferConfig offer, Transaction transaction, List<AppliedOffer> applied) {
+        BigDecimal discount = transaction.getItems().stream()
                 .filter(i -> offer.getCriteria().getSkuIn().contains(i.getSku()))
                 .map(i -> i.getUnitPrice()
                         .multiply(BigDecimal.valueOf(i.getQuantity()))
@@ -78,8 +78,8 @@ public class ConfigurableOfferEngine implements OfferEngine {
         return discount;
     }
 
-    private BigDecimal applyBogo(OfferConfig offer, Transaction tx, List<AppliedOffer> applied) {
-        return tx.getItems().stream()
+    private BigDecimal applyBogo(OfferConfig offer, Transaction transaction, List<AppliedOffer> applied) {
+        return transaction.getItems().stream()
                 .filter(i -> offer.getCriteria().getSku().equals(i.getSku()))
                 .map(i -> {
                     int freeUnits = i.getQuantity() / (offer.getDiscount().getBuyQty() + offer.getDiscount().getGetQty());
@@ -109,12 +109,12 @@ public class ConfigurableOfferEngine implements OfferEngine {
         return BigDecimal.ZERO;
     }
 
-    private int calculateStickers(OfferConfig offer, Transaction tx, BigDecimal originalTotal) {
+    private int calculateStickers(OfferConfig offer, Transaction transaction, BigDecimal originalTotal) {
         int base = originalTotal
                 .divide(offer.getRules().getSpendPerSticker(), RoundingMode.FLOOR)
                 .intValue();
 
-        int promo = tx.getItems().stream()
+        int promo = transaction.getItems().stream()
                 .filter(i -> offer.getRules().getPromoCategory().equalsIgnoreCase(i.getCategory()))
                 .mapToInt(TransactionItem::getQuantity)
                 .sum();

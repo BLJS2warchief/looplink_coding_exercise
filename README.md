@@ -13,7 +13,6 @@ and exposes APIs to inspect shopper activity.
 ## Prerequisites
 - Java 17 or higher
 - Maven
-- Redis
 
 ## Setup & Run (developed and tested using IntelliJ IDEA)
 
