@@ -34,6 +34,13 @@ mvn spring-boot:run
 Health check: GET http://localhost:8080/health
 Swagger UI: http://localhost:8080/swagger-ui.html
 ```
-## API Documentation
 
+## How to Try the APIs (Quick Demo) - explained along with the request body samples in TECH_NOTES.md
+
+1. Open Swagger UI at `http://localhost:8080/swagger-ui.html`
+2. Use `POST /transactions` with the sample transaction JSON
+3. Call `GET /shoppers/{shopperId}` to view sticker balance and history
+4. Use `POST /redemptions/{shopperId}` to redeem stickers
+
+## API Documentation
 All APIs are documented with description and can be run via Swagger UI.
