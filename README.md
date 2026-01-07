@@ -28,7 +28,7 @@ mvn clean install
 ```
 3. Run the application:
 ```
-./mvnw spring-boot:run
+mvn spring-boot:run
 ```
 4. Verify the app is running:
 ```

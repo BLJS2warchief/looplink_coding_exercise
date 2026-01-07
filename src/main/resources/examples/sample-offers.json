@@ -1,0 +1,50 @@
+{
+  "offers": [
+    {
+      "id": "OFFER10PCT-MILK",
+      "type": "PRODUCT_PERCENT_DISCOUNT",
+      "name": "10% off Milk",
+      "criteria": {
+        "sku_in": ["SKU-MILK"]
+      },
+      "discount": {
+        "percent": 10.0
+      }
+    },
+    {
+      "id": "OFFER5OFF50",
+      "type": "CART_FIXED_DISCOUNT",
+      "name": "$5 off $50+ Basket",
+      "criteria": {
+        "min_cart_total": 50.0
+      },
+      "discount": {
+        "amount": 5.0,
+        "currency": "USD"
+      }
+    },
+    {
+      "id": "OFFER-BOGO-PLUSH",
+      "type": "BOGO",
+      "name": "Buy 1 Get 1 Free Plush Toy",
+      "criteria": {
+        "sku": "SKU-PLUSH"
+      },
+      "bogo": {
+        "buy_qty": 1,
+        "get_qty": 1
+      }
+    },
+    {
+      "id": "OFFER-STICKERS",
+      "type": "STICKER_EARN",
+      "name": "Sticker Campaign",
+      "rules": {
+        "spend_per_sticker": 10.0,
+        "promo_category": "promo",
+        "promo_bonus_per_unit": 1,
+        "per_transaction_cap": 5
+      }
+    }
+  ]
+}

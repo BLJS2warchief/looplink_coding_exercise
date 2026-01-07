@@ -1,0 +1,22 @@
+{
+  "transaction_id": "tx-1001",
+  "shopper_id": "shopper-123",
+  "store_id": "store-01",
+  "timestamp": "2025-01-10T10:15:00Z",
+  "items": [
+    {
+      "sku": "SKU-MILK",
+      "name": "Milk",
+      "quantity": 2,
+      "unit_price": 5.00,
+      "category": "grocery"
+    },
+    {
+      "sku": "SKU-PLUSH",
+      "name": "Promo Plush Toy",
+      "quantity": 1,
+      "unit_price": 15.00,
+      "category": "promo"
+    }
+  ]
+}
