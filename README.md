@@ -12,10 +12,10 @@ and exposes APIs to inspect shopper activity.
 
 ## Prerequisites
 - Java 17 or higher
-- Maven or Gradle
+- Maven
 - Redis
 
-## Setup & Run
+## Setup & Run (developed and tested using IntelliJ IDEA)
 
 1. Clone the repository:
 ```
@@ -35,6 +35,6 @@ mvn spring-boot:run
 Health check: GET http://localhost:8080/health
 Swagger UI: http://localhost:8080/swagger-ui.html
 ```
-API Documentation
+## API Documentation
 
-All APIs are documented and can be exercised via Swagger UI.
+All APIs are documented with description and can be run via Swagger UI.

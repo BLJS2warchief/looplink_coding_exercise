@@ -1,4 +1,4 @@
-package ai.looplink.miniofferengine.model;
+package ai.looplink.miniofferengine.model.offer;
 
 import lombok.Data;
 
@@ -9,10 +9,9 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 @Data
-public class TransactionItem {
-    private String sku;
-    private String name;
-    private int quantity;
-    private BigDecimal unitPrice;
-    private String category;
+public class StickerRules {
+    private BigDecimal spendPerSticker;
+    private String promoCategory;
+    private int promoBonusPerUnit;
+    private int perTransactionCap;
 }

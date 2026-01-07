@@ -30,7 +30,7 @@
       "criteria": {
         "sku": "SKU-PLUSH"
       },
-      "bogo": {
+      "discount": {
         "buy_qty": 1,
         "get_qty": 1
       }
